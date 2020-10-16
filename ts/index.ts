@@ -422,3 +422,34 @@
 // // miFoto.id = 99;
 // // miFoto.id
 
+
+// ********************* //
+// *    DECORADORES    * //
+// ********************* //
+
+// Permiten extender la funcionalidad de otros elementos
+// Los decoradores NO existen en JS. Sólo en TS
+
+function extendedFunc(target: any, key: any) {
+    // target --> Hace referencia al elemento que posee el decorador
+    // key --> Hace referencia al elemento que extendemos
+    console.log(`Mi target es ${target}`);
+    console.log(`He llamado a ${key}`);
+}
+
+class Person {
+    private name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    @extendedFunc
+    sayMyName() {
+        console.log(`Tu nombre es ${this.name}`);
+    }
+}
+
+const federico = new Person('Federico');
+
+federico.sayMyName();
